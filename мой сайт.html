@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Мирослав — прототип сайта бесплатно за 1 час</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#ECE8DF;--ink:#111;--sig:#FF3B00;--mute:#6f6b62;--line:#11111124;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121110;--ink:#ECE8DF;--mute:#9a958a;--line:#ece8df2e;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#121110;--ink:#ECE8DF;--mute:#9a958a;--line:#ece8df2e;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.5 'Onest',system-ui,sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.wrap{padding:0 clamp(18px,4vw,56px)}
+header{display:flex;justify-content:space-between;align-items:center;padding:22px 0;border-bottom:1px solid var(--line)}
+header b{font-weight:800;font-size:18px;letter-spacing:-.02em}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--sig);color:#fff;padding:14px 24px;border-radius:999px;font-weight:500;transition:transform .25s}
+.mag{will-change:transform}
+/* HERO */
+.hero{padding:clamp(28px,6vw,72px) 0 0;position:relative}
+.lab{display:flex;gap:12px;align-items:center;color:var(--mute)}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--sig);animation:pulse 1.2s infinite}
+@keyframes pulse{50%{opacity:.15}}
+.timer{display:flex;align-items:baseline;font-weight:800;line-height:.82;letter-spacing:-.04em;font-size:clamp(4rem,30vw,32rem);margin:.08em 0 0 -.04em;color:var(--ink);user-select:none}
+.timer span{display:inline-block;width:.58em;text-align:center}
+.timer .c{width:.3em;color:var(--sig)}
+.timer .roll{animation:roll .35s cubic-bezier(.2,.8,.2,1)}
+@keyframes roll{from{transform:translateY(-22%);opacity:0}}
+.timer small{font:500 .09em/1 'IBM Plex Mono',monospace;color:var(--sig);margin-left:.4em;letter-spacing:0}
+.pitch{display:grid;grid-template-columns:1.3fr 1fr;gap:clamp(20px,5vw,80px);align-items:end;padding:clamp(28px,5vw,64px) 0 clamp(36px,6vw,80px)}
+.pitch h1{font-weight:800;font-size:clamp(2rem,5.4vw,5.2rem);line-height:.98;letter-spacing:-.035em}
+.pitch h1 em{font-style:normal;color:var(--sig)}
+.pitch p{color:var(--mute);max-width:34ch}
+.pitch .btn{margin-top:22px}
+/* MARQUEE */
+.mq{background:var(--ink);color:var(--bg);overflow:hidden;white-space:nowrap;padding:14px 0}
+.mq div{display:inline-block;animation:mq 28s linear infinite}
+.mq span{margin-right:2.2em}.mq i{color:var(--sig);font-style:normal;margin-right:2.2em}
+@keyframes mq{to{transform:translateX(-50%)}}
+/* WORKS */
+section{padding:clamp(56px,9vw,120px) 0 0}
+.sh{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:clamp(20px,3vw,40px)}
+.sh h2{font-weight:800;font-size:clamp(2rem,5vw,4.4rem);letter-spacing:-.035em;line-height:1}
+.row{display:grid;grid-template-columns:70px 1.4fr 1fr 40px;gap:20px;align-items:center;padding:clamp(20px,3vw,34px) 14px;border-top:1px solid var(--line);transition:background .35s,color .35s}
+.row:last-child{border-bottom:1px solid var(--line)}
+a.row:hover{background:var(--ink);color:var(--bg)}
+.row .n{color:var(--sig)}
+.row h3{font-weight:800;font-size:clamp(1.6rem,3.6vw,3.2rem);letter-spacing:-.03em;line-height:1.02}
+.row p{opacity:.65;font-size:15px;margin-top:6px}
+.sw{display:flex;height:54px;gap:4px}
+.sw i{flex:1;border-radius:2px;transition:flex .5s cubic-bezier(.2,.8,.2,1)}
+.sw i:hover,a.row:hover .sw i:nth-child(odd){flex:2.4}
+.arr{font-size:26px;transition:transform .3s;justify-self:end}
+a.row:hover .arr{transform:translate(6px,-6px);color:var(--sig)}
+.soon{opacity:.6}
+/* STEPS */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line)}
+.st{padding:28px 24px 8px 0}
+.st+.st{padding-left:24px;border-left:1px solid var(--line)}
+.st b{display:block;font:500 clamp(3rem,7vw,6rem)/1 'Onest';letter-spacing:-.05em;color:var(--sig);margin-bottom:14px}
+.st h3{font-size:22px;font-weight:800;letter-spacing:-.02em}
+.st p{color:var(--mute);margin-top:8px;max-width:30ch}
+/* CTA */
+.cta{margin-top:clamp(56px,9vw,120px);background:#0E0D0C;color:#ECE8DF;padding:clamp(44px,8vw,110px) 0;text-align:left;overflow:hidden}
+.cta .lab{color:#9a958a}
+.cta .timer{color:#ECE8DF;font-size:clamp(2.4rem,11vw,9rem);margin:.2em 0 .5em}
+.cta h2{font-weight:800;line-height:.82;letter-spacing:-.05em;text-transform:uppercase;font-size:clamp(3.6rem,19vw,20rem)}
+.cta h2 em{display:block;font-style:normal;color:var(--sig);font-size:1.45em;line-height:.9;transform-origin:left center;animation:pop 1.6s ease-in-out infinite}
+.cta h2 small{display:block;font-size:.2em;line-height:1.1;letter-spacing:-.02em;text-transform:none;margin-top:.5em}
+@keyframes pop{50%{transform:scale(1.035)}}
+.cta .btn{margin-top:34px;font-size:18px;padding:18px 32px}
+footer{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:22px 0;color:var(--mute)}
+/* reveal + cursor */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .8s,transform .8s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+#cur{position:fixed;left:0;top:0;width:16px;height:16px;border-radius:50%;background:#fff;mix-blend-mode:difference;pointer-events:none;z-index:9;transition:width .25s,height .25s;display:none}
+@media (pointer:fine){#cur{display:block}}
+@media (max-width:760px){
+.pitch{grid-template-columns:1fr}
+.row{grid-template-columns:36px 1fr 30px;gap:12px}
+.row .sw{grid-column:2/4;height:30px}
+.steps{grid-template-columns:1fr}.st+.st{padding-left:0;border-left:0;border-top:1px solid var(--line);margin-top:20px}
+header .mono{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div id="cur"></div>
+<div class="wrap">
+<header>
+  <b>Мирослав</b>
+  <span class="mono">Web-дизайн · Tilda · Figma</span>
+  <a class="btn mag" href="https://t.me/russiancckn" target="_blank" rel="noopener">Написать&nbsp;в&nbsp;Telegram ↗</a>
+</header>
+
+<div class="hero">
+  <div class="lab mono"><span class="dot"></span>До&nbsp;конца часа осталось</div>
+  <div class="timer" id="t" aria-label="Таймер до конца часа"><span>5</span><span>9</span><span class="c">:</span><span>5</span><span>9</span><small id="ms">.00</small></div>
+  <div class="pitch">
+    <h1>Прототип вашего сайта <em>бесплатно</em> — за&nbsp;один&nbsp;час.</h1>
+    <div>
+      <p>Пишете мне в&nbsp;Telegram, а&nbsp;через час уже видите свой сайт в&nbsp;дизайне. Понравится — доведу до&nbsp;готового за&nbsp;3&nbsp;дня.</p>
+      <a class="btn mag" href="https://t.me/russiancckn" target="_blank" rel="noopener">Запустить таймер ↗</a>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="mq" aria-hidden="true"><div>
+<span>Прототип бесплатно</span><i>●</i><span>За&nbsp;1&nbsp;час</span><i>●</i><span>Сайт за&nbsp;3&nbsp;дня</span><i>●</i><span>Бесплатная консультация</span><i>●</i>
+<span>Прототип бесплатно</span><i>●</i><span>За&nbsp;1&nbsp;час</span><i>●</i><span>Сайт за&nbsp;3&nbsp;дня</span><i>●</i><span>Бесплатная консультация</span><i>●</i>
+</div></div>
+
+<div class="wrap">
+<section>
+  <div class="sh rv"><h2>Работы</h2><span class="mono">Нажмите — откроется сайт</span></div>
+
+  <a class="row rv" href="https://claude.ai/artifact/2XfEsvUMynJ5tkMq1aekJs" target="_blank" rel="noopener">
+    <span class="n mono">01</span>
+    <div><h3>Красивая</h3><p>Бар, настойки и&nbsp;французская эстетика. Санкт-Петербург</p></div>
+    <div class="sw"><i style="background:#F4EFE6"></i><i style="background:#1E1B18"></i><i style="background:#B08D4A"></i><i style="background:#EB422E"></i></div>
+    <span class="arr">↗</span>
+  </a>
+  <a class="row rv" href="https://claude.ai/artifact/Mq7GeH7dCpyezBoyhH3h7P" target="_blank" rel="noopener">
+    <span class="n mono">02</span>
+    <div><h3>Звонок</h3><p>Бар на&nbsp;Некрасова. Салонная классика, две темы</p></div>
+    <div class="sw"><i style="background:#f4efe8"></i><i style="background:#b02e0c"></i><i style="background:#c9ab74"></i><i style="background:#1a1413"></i></div>
+    <span class="arr">↗</span>
+  </a>
+  <a class="row rv" href="https://claude.ai/artifact/BLjgdWNAp6EuC3pwvnwpMs" target="_blank" rel="noopener">
+    <span class="n mono">03</span>
+    <div><h3>Futurist</h3><p>Тёмный технологичный стиль, крупный гротеск и&nbsp;моно</p></div>
+    <div class="sw"><i style="background:#0b0b0c"></i><i style="background:#f1efe9"></i><i style="background:#8b887f"></i><i style="background:#2b2a28"></i></div>
+    <span class="arr">↗</span>
+  </a>
+  <a class="row rv" href="https://lesyapokidko.netlify.app/" target="_blank" rel="noopener">
+    <span class="n mono">04</span>
+    <div><h3>Леся Покидько</h3><p>Кондитер, Санкт-Петербург. Сайт с&nbsp;прайсом уроков и&nbsp;тортов</p></div>
+    <div class="sw"><i style="background:#0d0d0f"></i><i style="background:#2a2a2e"></i><i style="background:#d8d4cc"></i><i style="background:#FF3B00"></i></div>
+    <span class="arr">↗</span>
+  </a>
+</section>
+
+<section>
+  <div class="sh rv"><h2>Как это работает</h2><span class="mono">Три шага</span></div>
+  <div class="steps">
+    <div class="st rv"><b>1</b><h3>Пишете в&nbsp;Telegram</h3><p>Рассказываете о&nbsp;бизнесе в&nbsp;двух словах. Консультация бесплатная.</p></div>
+    <div class="st rv"><b>2</b><h3>Через час прототип</h3><p>Присылаю дизайн вашего сайта. Бесплатно и&nbsp;без обязательств.</p></div>
+    <div class="st rv"><b>3</b><h3>Сайт за&nbsp;3&nbsp;дня</h3><p>Нравится — собираю на&nbsp;Tilda, настраиваю и&nbsp;сдаю.</p></div>
+  </div>
+</section>
+</div>
+
+<div class="cta">
+  <div class="wrap">
+    <div class="lab mono"><span class="dot"></span>Осталось до&nbsp;конца часа</div>
+    <div class="timer" aria-label="Таймер до конца часа"><span>5</span><span>9</span><span class="c">:</span><span>5</span><span>9</span><small>.00</small></div>
+    <h2 class="rv">Скидка<em>100%</em><small>на&nbsp;прототип. Успей, пока идёт час</small></h2>
+    <a class="btn mag" href="https://t.me/russiancckn" target="_blank" rel="noopener">Написать @russiancckn ↗</a>
+  </div>
+</div>
+<div class="wrap"><footer class="mono"><span>© Мирослав, 2026</span><span>Прототип за&nbsp;60&nbsp;минут</span></footer></div>
+
+<script>
+(function(){
+var T=[].map.call(document.querySelectorAll('.timer'),function(t){return{s:t.querySelectorAll('span'),ms:t.querySelector('small'),last:['','','','']}});
+function pad(n){return n<10?'0'+n:''+n}
+function tick(){
+  var now=Date.now(),sec=Math.floor(now/1000)%3600,r=3599-sec,m=pad(Math.floor(r/60)),s=pad(r%60);
+  var v=[m[0],m[1],null,s[0],s[1]],idx=[0,1,3,4];
+  T.forEach(function(o){
+    idx.forEach(function(k,i){var ch=v[k];if(o.last[i]!==ch){o.last[i]=ch;o.s[k].textContent=ch;o.s[k].classList.remove('roll');void o.s[k].offsetWidth;o.s[k].classList.add('roll')}});
+    o.ms.textContent='.'+pad(99-Math.floor((now%1000)/10));
+  });
+  requestAnimationFrame(tick);
+}
+tick();
+try{var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.15});
+document.querySelectorAll('.rv').forEach(function(el,i){el.style.transitionDelay=(i%4)*70+'ms';io.observe(el)})}catch(e){document.querySelectorAll('.rv').forEach(function(el){el.classList.add('in')})}
+var cur=document.getElementById('cur');
+if(matchMedia('(pointer:fine)').matches){
+  addEventListener('mousemove',function(e){cur.style.transform='translate('+(e.clientX-8)+'px,'+(e.clientY-8)+'px)'});
+  document.querySelectorAll('a').forEach(function(a){a.addEventListener('mouseenter',function(){cur.style.width=cur.style.height='44px'});a.addEventListener('mouseleave',function(){cur.style.width=cur.style.height='16px'})});
+  document.querySelectorAll('.mag').forEach(function(b){
+    b.addEventListener('mousemove',function(e){var r=b.getBoundingClientRect();b.style.transform='translate('+(e.clientX-r.left-r.width/2)*.25+'px,'+(e.clientY-r.top-r.height/2)*.35+'px)'});
+    b.addEventListener('mouseleave',function(){b.style.transform=''});
+  });
+}
+})();
+</script>
+</body>
+</html>
